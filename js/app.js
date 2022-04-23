@@ -6,15 +6,38 @@ const fetchApi = (text) => {
     .then((res) => res.json())
     .then((dat) => (array = dat.hits))
     .catch((error) => console.log(error.message));
+  update();
 };
 window.onload = fetchApi("plov");
+setTimeout(() => {
+  fetchApi("plov");
+}, 2000);
 const input = document.querySelector("#input");
 const button = document.querySelector("#button");
 button.addEventListener("click", function () {
   fetchApi(input.value);
 });
-array &&
-  array.map((element) =>
-    // document.getElementById("push").appendChild(`<p>${element}</p>`)
-    console.log(element)
-  );
+let div;
+let image;
+let title;
+let ingredients;
+function update() {
+  array &&
+    array.map((element) => {
+      ingredients = document.createElement("p");
+      ingredients.classList.add("ingredients");
+      ingredients.innerText = "Ingredients";
+      title = document.createElement("p");
+      title.innerText = element.recipe.label;
+      image = document.createElement("img");
+      image.setAttribute("src", element.recipe.image);
+      div = document.createElement("div");
+      div.append(image);
+      div.append(title);
+      div.append(ingredients);
+      element.recipe.ingredients.map((element) => {
+        ingredients.innerHTML += `<br>${element.text}`;
+      });
+      document.getElementById("push").append(div);
+    });
+}

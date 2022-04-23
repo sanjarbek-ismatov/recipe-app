@@ -9,4 +9,8 @@
 main {
   font-family: "Roboto", sans-serif;
 }
+
+.ingredients::first-line {
+  font-weight: bold;
+}
 /*# sourceMappingURL=main.css.map */
