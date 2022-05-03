@@ -107,7 +107,25 @@
   }
 }
 @media only screen and (max-width: 1000px) {
-  .main .results {
-    grid-template-columns: repeat(1, 1fr) !important;
+  .main {
+    max-width: 500px !important;
+    .results {
+      grid-template-columns: repeat(1, 1fr) !important;
+      .recipe {
+        span {
+          width: 50%;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 566px) {
+  .main {
+    padding: 0 20px;
+  }
+}
+@media only screen and (max-width: 720px) {
+  input {
+    width: 95%;
   }
 }
